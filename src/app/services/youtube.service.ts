@@ -7,7 +7,7 @@ import { map } from "rxjs/operators";
   providedIn: "root"
 })
 export class YoutubeService {
-  private apiKey: string = 'AIzaSyAMMT_tlvh4imTWjttfmnv0owjN0Su8afg';
+  private apiKey: string = '';
 
   constructor(public http: HttpClient) {}
   getVideos(q, maxResults): Observable<Object> {
