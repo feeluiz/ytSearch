@@ -1,0 +1,61 @@
+<div id="container" style="width: 100vw;">
+  <mat-toolbar id="header" color="primary">
+    <mat-icon class="hide">
+      search
+    </mat-icon>
+    <h1 class="hide" style="width: 100%;padding: 5px;">
+      Youtube Video Search from API
+    </h1>
+
+    <span class="fill-remaining-space"></span>
+    <div class="form">
+      <input type="text" placeholder="Pesquisar" [formControl]="q" />
+      <button mat-button (click)="onSubmit()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div id="results">
+    <mat-card *ngFor="let video of videos" style="margin-top:10px;">
+      <mat-card-header>
+        <mat-card-title>{{ video.snippet.title }}</mat-card-title>
+        <mat-card-subtitle
+          >publicado: {{ video.snippet.publishedAt }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content style="max-width: 300px;max-height: 150px;">
+        <img
+          style="width: 90%;height: 90%;"
+          src="{{ video.snippet.thumbnails.medium.url }}"
+        />
+      </mat-card-content>
+      <mat-card-content>
+        <p>{{ video.snippet.description }}</p>
+        <a
+          mat-button
+          href="https://www.youtube.com/watch?v={{ video.id.videoId }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          assistir o video</a
+        >
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div id="footer" class="md-padding" layout="row">
+    <mat-toolbar color="primary">
+      <mat-icon class="material-icons">copyright</mat-icon>
+      <span class="fill-remaining-space" style="padding-left: 5px;">
+        created by feeluiz</span
+      >
+      <a
+        href="https://github.com/feeluiz/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Github</a
+      >
+    </mat-toolbar>
+  </div>
+</div>
